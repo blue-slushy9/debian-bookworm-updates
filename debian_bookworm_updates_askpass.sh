@@ -8,4 +8,9 @@ echo -en "\nEnter your password: "
 # without producing any output;
 read -s password
 
+export PASSWD="$password"
+
 echo -e "\n\nThank you, your password has been received.\n"
+
+# Exit askpass script and return to main script;
+#exit 0
