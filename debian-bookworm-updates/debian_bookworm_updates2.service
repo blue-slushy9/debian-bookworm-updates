@@ -1,0 +1,22 @@
+# /etc/systemd/system/debian_updates.service
+
+[Unit]
+Description=Install all Debian updates, thus far APT and snap
+
+[Service]
+ExecStart=/home/moi/debian_updates.sh
+WorkingDirectory=/home/moi/debian-updates/
+User=moi
+Group=moi
+# Specifices when service should be restarted, always means 
+# that is the service exits unexpectedly, systemd will auto-
+# matically restart the service
+Restart=always 
+
+[Install]
+# Indicates the target or runlevel in which the
+# service should be activated, "default.target" means
+# the default target which the system boots into;
+# i.e. the service will be started automatically when
+# the system boots up
+WantedBy=default.target 
