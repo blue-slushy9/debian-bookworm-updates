@@ -1,0 +1,21 @@
+# /etc/systemd/system/debian_bookworm_updates.service
+
+[Unit]
+Description=Install all Debian updates, thus far APT and snap.
+
+[Service]
+Type=simple
+ExecStart=/home/me/GitHub/bash/debian-bookworm-updates/debian_bookworm_updates3.sh
+WorkingDirectory=/home/me/GitHub/bash/debian-bookworm-updates/
+# Specifices when service should be restarted; always means 
+# that if the service exits unexpectedly, systemd will auto-
+# matically restart the service;
+Restart=always 
+
+[Install]
+# Indicates the target or runlevel in which the
+# service should be activated, "default.target" means
+# the default target which the system boots into;
+# i.e. the service will be started automatically when
+# the system boots up;
+WantedBy=default.target 
