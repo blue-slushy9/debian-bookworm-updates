@@ -1,32 +1,38 @@
 #!/bin/bash
 
 passwd_prompt() {
+    local password
+
     # read -s means silent mode, the characters are accepted by the terminal
     # without producing any output; -p allows for a prompt; password is the
     # variable that will store what the user types in;
     read -s -p "Please enter your password: " password
-    
+   
     #export PASSWD="$password"
 
-    echo -e "\nThank you, your password has been received.\n"
+    echo "Thank you, your password has been received."
     
-    return $(echo "$password")
+    echo "This is within the func: $password"
+
+    echo "$password"
 }
 
 #export SUDO_ASKPASS=passwd_prompt
 
 #export -f passwd_prompt
 
-export SUDO_ASKPASS="$0"
+#export SUDO_ASKPASS="$0"
 
 #passwd=$(sudo -A true)
 
 passwd=$(passwd_prompt)
 
-echo "$passwd"
+echo "This is outside of func: $passwd"
 
 ######
+
 : << 'COMMENT'
+
 #!/bin/bash
 
 # Function to capture the password without displaying it
