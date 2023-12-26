@@ -1,0 +1,26 @@
+# /etc/systemd/system/debian_bookworm_updates.service
+
+[Unit]
+Description=Install all Debian updates, thus far APT and snap.
+
+[Service]
+Type=simple
+ExecStart=/home/moi/GitHub/bash/debian-bookworm-updates/debian_bookworm_updates4.sh
+WorkingDirectory=/home/moi/GitHub/bash/debian-bookworm-updates/
+# Specifices when service should be restarted; always means 
+# that if the service exits unexpectedly, systemd will auto-
+# matically restart the service;
+Restart=no 
+# This environment variable tells Debian that a password prompt is expected;
+#Environment=PASSWORD_PROMPT=1
+# Allocate a TeleTYpewriter to the service, that way the service knows we need
+# to use the terminal to enter the password;
+#TTYPath=/dev/console
+
+[Install]
+# Indicates the target or runlevel in which the
+# service should be activated, "default.target" means
+# the default target which the system boots into;
+# i.e. the service will be started automatically when
+# the system boots up;
+WantedBy=default.target 

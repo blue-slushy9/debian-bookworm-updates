@@ -1,0 +1,20 @@
+# /etc/systemd/system/debian_bookworm_updates.timer
+
+[Unit]
+Description=This service should run once a week
+
+[Timer]
+OnCalendar=weekly
+# Persistent=true ensures the service runs even if a timespan greater than one
+# week elapses, e.g. if the laptop is turned off for two weeks;
+Persistent=true
+
+[Install]
+# WantedBy establishes a dependency relationship, in this case with a timer;
+# target units in systemd are special units that group other units together,
+# e.g. this service and its timer; timers.target is a special target unit in
+# systemd that is reached during the start-up process after basic system
+# initialization but before other services are started, i.e. the timer is 
+# designed to be activated when systemd reaches the timers.target during the
+# system startup process;
+WantedBy=timers.target
