@@ -1,2 +1,0 @@
-# Error message in journalctl says to use this tool to capture password
-systemd-tty-ask-password-agent
