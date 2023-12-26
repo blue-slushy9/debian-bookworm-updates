@@ -1,21 +1,25 @@
 # /etc/systemd/system/debian_bookworm_updates.service
 
+# This is just a redacted copy of the actual service file that lives in the 
+# above directory, this one exists just to upload to GitHub;
+
 [Unit]
 Description=Install all Debian updates, thus far APT and snap.
 
 [Service]
+# simple is the most basic and common service type, it means the service will
+# run in the foreground and that systemd will not perform any additional
+# management beyond tracking its process ID (PID); systemd assumes that once
+# the service is started, it will continue running as the main process,
+# and systemd will not try to manage multiple processes or restart it if it 
+# exits;
 Type=simple
+# Means "execute this file" when the service is started;
 ExecStart=/home/moi/GitHub/bash/debian-bookworm-updates/debian_bookworm_updates4.sh
 WorkingDirectory=/home/moi/GitHub/bash/debian-bookworm-updates/
-# Specifices when service should be restarted; always means 
-# that if the service exits unexpectedly, systemd will auto-
-# matically restart the service;
+# Specifies when service should be restarted, "no" means it will not be auto-
+# matically restarted once it finishes running the first time;
 Restart=no 
-# This environment variable tells Debian that a password prompt is expected;
-#Environment=PASSWORD_PROMPT=1
-# Allocate a TeleTYpewriter to the service, that way the service knows we need
-# to use the terminal to enter the password;
-#TTYPath=/dev/console
 
 [Install]
 # Indicates the target or runlevel in which the

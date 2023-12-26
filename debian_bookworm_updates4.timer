@@ -1,9 +1,12 @@
 # /etc/systemd/system/debian_bookworm_updates.timer
 
+# This is just a redacted copy to be included in the GitHub repo;
+
 [Unit]
-Description=This service should run once a week
+Description=This service should run once a week.
 
 [Timer]
+#OnCalendar=*:0/1 # DEBUGGING - will run every minute on the 0th second
 OnCalendar=weekly
 # Persistent=true ensures the service runs even if a timespan greater than one
 # week elapses, e.g. if the laptop is turned off for two weeks;
