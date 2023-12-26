@@ -1,2 +1,31 @@
-# Error message in journalctl says to use this tool to capture password
+# Reload daemon configuration, must be run if you've made changes to any
+# service files;
+sudo systemctl daemon-reload
+
+# Check the status of a service;
+sudo systemctl status <service-name>
+
+# Manually start a service;
+sudo systemctl start <service-name>
+
+# Manually stop a service;
+sudo systemctl stop <service-name>
+
+# Enable a service;
+sudo systemctl enable <service-name>
+
+# Disable a service;
+sudo systemctl disable <service-name>
+
+# View logs for a service, you can press Shift+G to scroll all the way down;
+sudo journalctl -u <service-name>
+
+# View the system time(s);
+timedatectl
+
+# Set the system time;
+sudo timedatectl set-time "YYYY-MM-DD"
+
+# Error message in journalctl says to use this tool to capture password,
+# ended up not using it because a password wasn't necessary for this service;
 systemd-tty-ask-password-agent
